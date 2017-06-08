@@ -1,0 +1,4 @@
+horse zebra cat bear table
+bed orange_juice milk tea coffee
+apple pear peach banana mango potato
+0
