@@ -1,0 +1,10 @@
+There are 2 scripts in this directory:
+* runmonitor.sh : This daemonizes the monitor.sh script
+* monitor.sh : This script monitors the process that needs to be restarted.
+
+Running:
+./runmonitor COMMAND ARGS
+(this exits immediately as the monitor is daemonized. See Logging)
+
+Logging:
+Logging is sent to syslog.info and syslog.err.

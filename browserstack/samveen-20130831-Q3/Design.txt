@@ -1,0 +1,22 @@
+Components:
+Webserver(on host)
+proxy server(on device)
+
+Host device communication:
+* Requests coming to the device get redirected to the host to which the device is attached.
+* Host web server uses ADB to connect to the device and launch commands as required using the activity manager command (am).
+
+Example start command:
+  am start -n -n browser.package/Main.View.Intent
+
+Similarly intents can be sent for the other actions as well.
+
+
+Components design:
+
+Webserver options:
+* Webserver hard coded with /start,/stop,/cleanup urls which handle appropriate actions
+* Any general webserver with /start,/stop,/cleanup cgi scripts. 
+
+Device proxy:
+It just needs to be a really thin connection forwarder, something like an ssh tunnel, except the proxy can just forward the connection via TCP.
