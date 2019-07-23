@@ -1,0 +1,44 @@
+---
+python -u supervise.py --wait 5 --attempts 3 --check 10  -l 'bash -c "sleep 5 && exit 0"' &> 2.log
+---
+monitor options: {"check": 10, "attempts": 3, "log": true, "wait": 5}
+Parse proc: ["bash", "-c", "sleep 5 && exit 0"]
+start proc
+sleep 10s before next check
+poll: proc stopped with status code 0
+retry 1/3
+wait 5s before retry
+poll: proc stopped with status code 0
+retry 2/3
+wait 5s before retry
+poll: still running
+sleep 10s before next check
+poll: proc stopped with status code 0
+retry 1/3
+wait 5s before retry
+poll: still running
+sleep 10s before next check
+poll: proc stopped with status code 0
+retry 1/3
+wait 5s before retry
+poll: proc stopped with status code 0
+retry 2/3
+wait 5s before retry
+poll: still running
+sleep 10s before next check
+poll: proc stopped with status code 0
+retry 1/3
+wait 5s before retry
+poll: still running
+sleep 10s before next check
+poll: proc stopped with status code 0
+retry 1/3
+wait 5s before retry
+poll: proc stopped with status code 0
+retry 2/3
+wait 5s before retry
+poll: proc stopped with status code 0
+retry 3/3
+wait 5s before retry
+poll: proc stopped with status code 0
+too many retries. Exiting

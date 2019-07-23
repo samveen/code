@@ -1,0 +1,20 @@
+---
+python -u supervise.py --wait 5 --attempts 3 --check 5  -l 'bash -c "if [ -f lock ]; then exit 1; fi; sleep 10 && touch lock && exit 1"' &>5.log
+---
+monitor options: {"check": 5, "attempts": 3, "log": true, "wait": 5}
+Parse proc: ["bash", "-c", "if [ -f lock ]; then exit 1; fi; sleep 10 && touch lock && exit 1"]
+start proc
+sleep 5s before next check
+poll: still running
+sleep 5s before next check
+poll: proc stopped with status code 1
+retry 1/3
+wait 5s before retry
+poll: proc stopped with status code 1
+retry 2/3
+wait 5s before retry
+poll: proc stopped with status code 1
+retry 3/3
+wait 5s before retry
+poll: proc stopped with status code 1
+too many retries. Exiting
