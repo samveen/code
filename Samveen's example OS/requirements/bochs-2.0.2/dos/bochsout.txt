@@ -1,0 +1,136 @@
+00000000000i[MEM0 ] allocated memory at 00BE0020. after alignment, vector=00BE1000
+00000000000i[MEM0 ] 32.00MB
+00000000000i[MEM0 ] rom at 0xf0000/65536 ('../BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/32769 ('../VGABIOS-elpin-2.40')
+00000000000i[CMOS ] Setting initial clock to: Thu May 29 00:26:24 2003 (time0=1054148184)
+00000000000i[DMA  ] channel 4 used by cascade
+00000000000i[DMA  ] channel 2 used by Floppy Drive
+00000000000i[FDD  ] fd0: 'dos.img' ro=0, h=2,t=80,spt=18
+00000000000i[KMAP ] Loading keymap from '../keymaps/x11-pc-us.map'
+00000000000i[KMAP ] Loaded 168 symbols
+00000000000i[VGA  ] interval=30000
+00000000000i[VGA  ] VBE Bochs Display Extension Enabled
+00000000000i[     ] init_mem of 'harddrv' plugin device by virtual method
+00000000000i[     ] init_mem of 'keyboard' plugin device by virtual method
+00000000000i[     ] init_mem of 'serial' plugin device by virtual method
+00000000000i[     ] init_mem of 'parallel' plugin device by virtual method
+00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
+00000000000i[HD   ] HD on ata0-0: 'c.img'
+00000000000i[HD   ] translation on ata0-0 set to 'none'
+00000000000i[HD   ] Boot device will be 'a'
+00000000000i[HD   ] Floppy boot signature check is enabled
+00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
+00000000000i[KBD  ] will paste characters every 1000 keyboard ticks
+00000000000i[     ] init_dev of 'serial' plugin device by virtual method
+00000000000i[SER  ] com1 at 0x3f8/8 irq 4
+00000000000i[     ] init_dev of 'parallel' plugin device by virtual method
+00000000000i[PAR  ] parallel port 1 at 0x378
+00000000000i[     ] reset of 'harddrv' plugin device by virtual method
+00000000000i[     ] reset of 'keyboard' plugin device by virtual method
+00000000000i[     ] reset of 'serial' plugin device by virtual method
+00000000000i[     ] reset of 'parallel' plugin device by virtual method
+00000004256i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+00000330043i[KBD  ] reset-disable command received
+00000507932i[HD   ] enabling LBA mode
+00000513690i[BIOS ] ata0-0: PCHS=203/16/63 translation=none LCHS=203/16/63
+00000531353e[HD   ] device set to 1 which does not exist
+00002100754i[BIOS ] int15: Func 24h, subfunc 03h, A20 gate control not supported
+00002274532i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002278953i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002283374i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002287795i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002292234i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002296655i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002301076i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002305497i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002309918i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002314339i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002318778i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002323199i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002327620i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002332041i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002336462i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00002340883i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00274492500i[WGUI ] system RESET callback.
+00274492500e[SYS  ] # bx_pc_system_c::ResetSignal() called
+00274492500i[     ] reset of 'harddrv' plugin device by virtual method
+00274492500i[     ] reset of 'keyboard' plugin device by virtual method
+00274492500i[     ] reset of 'serial' plugin device by virtual method
+00274492500i[     ] reset of 'parallel' plugin device by virtual method
+00274496756i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+00274830067i[KBD  ] reset-disable command received
+00275007882i[HD   ] enabling LBA mode
+00275013640i[BIOS ] ata0-0: PCHS=203/16/63 translation=none LCHS=203/16/63
+00275031303e[HD   ] device set to 1 which does not exist
+00276603300i[BIOS ] int15: Func 24h, subfunc 03h, A20 gate control not supported
+00276777078i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276781499i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276785938i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276790359i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276794780i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276799201i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276803622i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276808043i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276812482i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276816903i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276821324i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276825745i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276830166i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276834587i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276839026i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00276843447i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00415278500i[WGUI ] system RESET callback.
+00415278500e[SYS  ] # bx_pc_system_c::ResetSignal() called
+00415278500i[     ] reset of 'harddrv' plugin device by virtual method
+00415278500i[     ] reset of 'keyboard' plugin device by virtual method
+00415278500i[     ] reset of 'serial' plugin device by virtual method
+00415278500i[     ] reset of 'parallel' plugin device by virtual method
+00415282756i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+00415610063i[KBD  ] reset-disable command received
+00415787878i[HD   ] enabling LBA mode
+00415793636i[BIOS ] ata0-0: PCHS=203/16/63 translation=none LCHS=203/16/63
+00415811299e[HD   ] device set to 1 which does not exist
+00416136067i[HD   ] enabling LBA mode
+00417394744i[BIOS ] int15: Func 24h, subfunc 03h, A20 gate control not supported
+00417568540i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417572961i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417577382i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417581803i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417586224i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417590645i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417595066i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417599505i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417603926i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417608347i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417612768i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417617189i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417621610i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417626049i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417630470i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00417634891i[BIOS ] *** int 15h function AX=D800, BX=0026 not yet supported!
+00523716760i[HD   ] enabling LBA mode
+00523835281i[BIOS ] int13_harddisk function 18h unsupported, returns fail
+00562111480i[HD   ] enabling LBA mode
+00942120040i[HD   ] enabling LBA mode
+00976881540i[HD   ] enabling LBA mode
+01082960000p[WGUI ] >>PANIC<< POWER button turned off.
+01082960000i[SYS  ] Last time is 1054150348
+01082960000i[CPU  ] real mode
+01082960000i[CPU  ] CS.d_b = 16 bit
+01082960000i[CPU  ] SS.d_b = 16 bit
+01082960000i[CPU  ] | EAX=00000000  EBX=0000037c  ECX=00000586  EDX=000000c9
+01082960000i[CPU  ] | ESP=00000a74  EBP=00000000  ESI=00000016  EDI=00000300
+01082960000i[CPU  ] | IOPL=3 NV UP EI PL ZR NA PE NC
+01082960000i[CPU  ] | SEG selector     base    limit G D
+01082960000i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+01082960000i[CPU  ] |  DS:00c9( 0005| 0|  0) 00000c90 0000ffff 0 0
+01082960000i[CPU  ] |  ES:00c9( 0005| 0|  0) 00000c90 0000ffff 0 0
+01082960000i[CPU  ] |  FS:0000( 0000| 0|  0) 00000000 0000ffff 0 0
+01082960000i[CPU  ] |  GS:0000( 0000| 0|  0) 00000000 0000ffff 0 0
+01082960000i[CPU  ] |  SS:00c9( 0005| 0|  0) 00000c90 0000ffff 0 0
+01082960000i[CPU  ] |  CS:ff33( 0004| 0|  0) 000ff330 0000ffff 0 0
+01082960000i[CPU  ] | EIP=00008c80 (00008c80)
+01082960000i[CPU  ] | CR0=0x00000010 CR1=0x00000000 CR2=0x00000000
+01082960000i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+01082960000i[     ] restoring default signal behavior
+01082960000i[CTRL ] quit_sim called with exit code 1

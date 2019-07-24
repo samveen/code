@@ -1,0 +1,11 @@
+# This is an unofficial pkg-config file for libintl --tml@iki.fi
+prefix=/target
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/gtkdeps-2.0
+
+Name: libintl
+Description: The intl library from GNU gettext
+Version: 0.10.40-tml
+Libs: -L${libdir} -lintl
+Cflags: -I${includedir}

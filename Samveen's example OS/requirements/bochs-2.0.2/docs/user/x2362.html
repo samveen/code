@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Notes about VESA usage</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Tips and Techniques"
+HREF="c1900.html"><LINK
+REL="PREVIOUS"
+TITLE="How to enter special key combination"
+HREF="x2356.html"><LINK
+REL="NEXT"
+TITLE="Guest operating systems"
+HREF="c2379.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2356.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Tips and Techniques</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c2379.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="VESA-NOTES">Notes about VESA usage</H1
+><P
+>Since Bochs version 1.4 it's possible to use VESA graphics. There are some limitations in the current implementation,
+but in general it should work ok (we have run several test programs, the XFree86 VESA display driver, etc)</P
+><P
+>Current limitations:
+<P
+></P
+><UL
+><LI
+><P
+> only 8bpp modes are supported (no 16bpp, 24bpp or 32bpp!)</P
+></LI
+><LI
+><P
+> banked mode is very slow (if you can, just use Linear Frame Buffering instead!) </P
+></LI
+><LI
+><P
+> only 320x200, 640x400, 640x480, 800x600, 1024x768 are currently supported</P
+></LI
+></UL
+></P
+><P
+>Interesting Facts:
+<P
+></P
+><UL
+><LI
+><P
+> You need a display driver capable of using the VESA bios for this to work 
+	                  (a recent XFree86 will do, Windows 9x/NT/2K/XP probably will not work 'out of the box'. </P
+></LI
+><LI
+><P
+> Currently the VBE2 extension should be supported ok </P
+></LI
+></UL
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2356.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c2379.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to enter special key combination</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1900.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Guest operating systems</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,24 @@
+[Setup]
+AppName=Image Libraries
+AppVersion=1
+Description=Various image handling libraries.
+Url=
+
+[Files]
+C:\Dev-C++\lib\libjpeg.a
+C:\Dev-C++\lib\libpng.a
+C:\Dev-C++\lib\libtiff.a
+C:\Dev-C++\lib\libxpm.a
+C:\Dev-C++\lib\libz.a
+C:\Dev-C++\include\jconfig.h
+C:\Dev-C++\include\jerror.h
+C:\Dev-C++\include\jmorecfg.h
+C:\Dev-C++\include\jpeglib.h
+C:\Dev-C++\include\png.h
+C:\Dev-C++\include\pngasmrd.h
+C:\Dev-C++\include\pngconf.h
+C:\Dev-C++\include\tiff.h
+C:\Dev-C++\include\tiffio.h
+C:\Dev-C++\include\tiffvers.h
+C:\Dev-C++\include\zconf.h
+C:\Dev-C++\include\zlib.h

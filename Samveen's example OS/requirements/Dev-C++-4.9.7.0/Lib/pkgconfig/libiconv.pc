@@ -1,0 +1,11 @@
+# This is an unofficial pkg-config file for libiconv --tml@iki.fi
+prefix=/target
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/gtkdeps-2.0
+
+Name: libconv
+Description: GNU iconv library
+Version: 1.7
+Libs: -L${libdir} -liconv
+Cflags: -I${includedir}

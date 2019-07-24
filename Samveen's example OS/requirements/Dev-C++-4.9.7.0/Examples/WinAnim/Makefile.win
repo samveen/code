@@ -1,0 +1,30 @@
+# Project: Animation Example
+# Makefile created by Dev-C++ 4.9.7.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Anim_private.res
+OBJ  = Main.o $(RES)
+LIBS =  -L"C:/Dev-C++/lib" -mwindows 
+INCS =  -I"C:/Dev-C++/include" 
+BIN  = Anim.exe
+CXXFLAGS = $(INCS) 
+CFLAGS = $(INCS) 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Anim.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o "Anim.exe" $(LIBS) $(CFLAGS)
+
+Main.o: Main.c 
+	$(CC) -c Main.c -o Main.o $(CFLAGS)
+
+Anim_private.res: Anim_private.rc Images.rc 
+	$(WINDRES) -i Anim_private.rc -I rc -o Anim_private.res -O coff 

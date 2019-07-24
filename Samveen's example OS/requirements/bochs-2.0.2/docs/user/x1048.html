@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Installing the VGA font (X windows only)</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Installation"
+HREF="c323.html"><LINK
+REL="PREVIOUS"
+TITLE="Compiling Bochs"
+HREF="x589.html"><LINK
+REL="NEXT"
+TITLE="Setup"
+HREF="c1061.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x589.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c1061.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="VGAFONT">Installing the VGA font (X windows only)</H1
+><P
+>In text mode, Bochs requires your X server to have access to the
+VGA font.  If you don't already have it, you must install it.  The
+file is in the source directory, called <TT
+CLASS="FILENAME"
+>font/vga.pcf</TT
+>.
+If the VGA font is not installed properly, you will get an error when you
+start Bochs: "Could not open vga font".</P
+><P
+>There are two options; you may install the VGA font in a global place, or
+in a local directory.  You may need to install it locally if you don't have
+root access.  </P
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1053">Option 1: Installing VGA font in global font directory</H2
+><P
+>The commands below show how to copy the VGA font from the source directory
+into the X windows font directory.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>   # NOTE1: Make sure your DISPLAY variable points to local machine.
+   # NOTE2: These steps require root privileges.
+   # NOTE3: Your X11 fonts path will vary on different systems. For example:
+   #        Solaris 2.x /usr/openwin/lib/X11/fonts
+   #        Linux       /usr/lib/X11/fonts/
+   root# cp font/vga.pcf font-path-here/misc
+   root# compress font-path-here/misc/vga.pcf
+   root# mkfontdir font-path-here/misc
+   root# xset fp rehash
+   root# /etc/rc.d/init.d/xfs restart     (Restart your X font server)</PRE
+></TD
+></TR
+></TABLE
+><P
+>The command to restart the X font server is given for Redhat systems, but
+it will vary between different machines, and might not even be necessary at
+all.  If you cannot figure out how to restart your font server, you can
+just reboot.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1058">Option 2: Installing VGA font in local font directory</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>   # NOTE1: Make sure your DISPLAY variable points to local machine.
+   # NOTE2: The "xset" command needs to be run for each X session (you may
+   # add it to your ~/.xinitrc ).
+   user-&#62; mkfontdir bochs-YYMMDD/font
+   user-&#62; xset fp+ [full-path]/bochs-YYMMDD/font</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x589.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c1061.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Compiling Bochs</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c323.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

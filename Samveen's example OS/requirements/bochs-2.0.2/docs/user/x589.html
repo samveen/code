@@ -1,0 +1,2527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Compiling Bochs</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Installation"
+HREF="c323.html"><LINK
+REL="PREVIOUS"
+TITLE="Installing a Binary"
+HREF="x489.html"><LINK
+REL="NEXT"
+TITLE="Installing the VGA font (X windows only)"
+HREF="x1048.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x489.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1048.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="COMPILING">Compiling Bochs</H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN591">Standard Compile</H2
+><P
+>Bochs is written in C++, so you need a C++ compiler on your system.  Most
+platforms have been tested with GNU gcc/g++, but other compilers are known
+to work too.  By now, you should have unpacked your source TAR file or checked
+out Bochs from CVS.  If not, you can return to <A
+HREF="c323.html#DOWNLOADING"
+>Downloading Bochs</A
+> for details.  The top level
+directory of the source code will be referred to as <TT
+CLASS="VARNAME"
+>$BOCHS</TT
+>.  (<TT
+CLASS="VARNAME"
+>$BOCHS</TT
+>
+contains the files <TT
+CLASS="FILENAME"
+>bochs.h</TT
+> and
+<TT
+CLASS="FILENAME"
+>main.cc</TT
+> and subdirectories <TT
+CLASS="FILENAME"
+>cpu</TT
+> and
+<TT
+CLASS="FILENAME"
+>bios</TT
+>.) </P
+><P
+>The standard compile process has three basic steps:
+<B
+CLASS="COMMAND"
+>configure</B
+>, <B
+CLASS="COMMAND"
+>make</B
+>, and <B
+CLASS="COMMAND"
+>make
+install</B
+>.  Each step is described in a separate section below.  The
+standard compile process is used on all Unix machines, MacOS X, BeOS, and 
+Cygwin (win32).  There are separate instructions for <A
+HREF="x589.html#COMPILING-WIN32"
+>compiling for Win32 with Microsoft VC++</A
+>.</P
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="CONFIGURE">Configure</H3
+><P
+>There is a script called <B
+CLASS="COMMAND"
+>configure</B
+> which tests your
+machine, C/C++ compiler and libraries to discover what settings should work on
+your system.  If you run <B
+CLASS="COMMAND"
+>configure</B
+> with no arguments after
+it, defaults will be used for all settings.  To change the settings, you can
+run <B
+CLASS="COMMAND"
+>configure</B
+> with options that override the 
+defaults.  You can get a list of valid configure options by typing
+<B
+CLASS="COMMAND"
+>configure --help</B
+>.  One useful configure option is
+--prefix=<TT
+CLASS="REPLACEABLE"
+><I
+>directory</I
+></TT
+>, which sets the directory in
+which Bochs will be installed.  All the possible configure options are
+documented in a <A
+HREF="x589.html#CONFIG-OPTS"
+>later section</A
+>.  
+&#13;</P
+><P
+>Among other things, the configure script tries to detect your platform
+and which compile options to use.  If you want to control this, set these
+environment variables before running configure: <TT
+CLASS="VARNAME"
+>CC</TT
+>,
+<TT
+CLASS="VARNAME"
+>CXX</TT
+>, <TT
+CLASS="VARNAME"
+>CFLAGS</TT
+>,
+<TT
+CLASS="VARNAME"
+>CXXFLAGS</TT
+>.  Here is an example that sets the environment
+variables, using bash/ksh<A
+NAME="AEN620"
+HREF="#FTN.AEN620"
+>[1]</A
+>
+syntax:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  export CC=egcs
+  export CXX="$CC"
+  export CFLAGS="-Wall -O2 -m486 -fomit-frame-pointer -pipe"
+  export CXXFLAGS="$CFLAGS"</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>Once the configure script knows what options are selected,
+it creates a Makefile in every source code directory, and creates 
+<TT
+CLASS="FILENAME"
+>$BOCHS/config.h</TT
+> with all the option values written
+as preprocessor #defines.  Now the sources are ready to compile.</P
+><DIV
+CLASS="SECTION"
+><H4
+CLASS="SECTION"
+><A
+NAME="AEN628">Configure Shortcut Scripts</H4
+><P
+>In the Bochs source directory, you will see a series of scripts called
+<TT
+CLASS="FILENAME"
+>.conf.<TT
+CLASS="REPLACEABLE"
+><I
+>platform</I
+></TT
+></TT
+>.
+These scripts run the <B
+CLASS="COMMAND"
+>configure</B
+> script for you, with a set of
+options that are appropriate for that platform.  It is not necessary to
+use the shortcut scripts; they are simply there to show you an example that
+the developers have used.
+
+<DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If a shortcut script is "almost right" for you, just edit it and then run it!
+If you run a shortcut script, you don't need to run configure manually.  </P
+></TD
+></TR
+></TABLE
+></DIV
+>
+
+Run a shortcut script using Bourne shell, like this:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  sh .conf.win32-vcpp</PRE
+></TD
+></TR
+></TABLE
+>
+
+These <TT
+CLASS="FILENAME"
+>.conf.<TT
+CLASS="REPLACEABLE"
+><I
+>platform</I
+></TT
+></TT
+> have 
+been tested in recent Bochs versions:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  .conf.linux
+  .conf.sparc
+  .conf.macos
+  .conf.macosx
+  .conf.win32-vcpp
+  .conf.win32-cygwin
+  .conf.AIX.4.3.1
+  .conf.beos</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN640">Make</H3
+><P
+>The <B
+CLASS="COMMAND"
+>make</B
+> command compiles Bochs.  Make is a program
+used by many software projects that reads the <TT
+CLASS="FILENAME"
+>Makefile</TT
+> in each source
+directory and follows the instructions that it finds there.  A <TT
+CLASS="FILENAME"
+>Makefile</TT
+> tells
+which files depend on which other files, what commands to use to compile and
+link the code, and more.  After you have finished the configure step, just type
+<B
+CLASS="COMMAND"
+>make</B
+> to build the source code.  </P
+><P
+>The reason that make is so popular is that it is smart about when to compile
+and when not to compile.  If you run make once, it compiles every file.  But
+when you run it again, it checks to see if any source files have been modified;
+if not, there's nothing to do!  For example, the <TT
+CLASS="FILENAME"
+>Makefile</TT
+> says that
+<TT
+CLASS="FILENAME"
+>main.o</TT
+> depends on <TT
+CLASS="FILENAME"
+>main.cc</TT
+>.  Knowing 
+this, it will only compile <TT
+CLASS="FILENAME"
+>main.cc</TT
+> if it is newer than
+<TT
+CLASS="FILENAME"
+>main.o</TT
+>.</P
+><P
+>Of course, make can only do the right thing if the <TT
+CLASS="FILENAME"
+>Makefile</TT
+> lists all the
+dependencies correctly, so human error can sometimes lead make astray.
+If make refuses to build something that you think it should, or you 
+are getting strange compile errors, try doing <B
+CLASS="COMMAND"
+>make all-clean</B
+>
+and then <B
+CLASS="COMMAND"
+>make</B
+> again.  All-clean means to clean up
+the compiled files in every subdirectory, while <B
+CLASS="COMMAND"
+>make clean</B
+>
+means to clean up just the current directory<A
+NAME="AEN658"
+HREF="#FTN.AEN658"
+>[2]</A
+>.  However, it's important to note that <B
+CLASS="COMMAND"
+>make
+all-clean</B
+> leaves the configuration intact.  You do not have
+to run <B
+CLASS="COMMAND"
+>configure</B
+> again.</P
+><P
+>If you're really in the mood for cleaning, <B
+CLASS="COMMAND"
+>make dist-clean</B
+>
+erases all the configuration information too.  In theory, after a dist-clean
+your directory should look much like when you first untarred it or checked it
+out.  There's usually some extra stuff lying around, but the <TT
+CLASS="FILENAME"
+>Makefile</TT
+> tries
+at least to erase any files that it created.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN665">Make Install</H3
+><P
+>Once the program has been built, the next step is typically to run
+<B
+CLASS="COMMAND"
+>make install</B
+> to copy the executables, documentation, and
+other required files into a public place so that all users can use it.
+<A
+NAME="AEN669"
+HREF="#FTN.AEN669"
+>[3]</A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="CONFIG-OPTS">Configure Options</H2
+><P
+>This section describes the configure options for Bochs.  Perhaps the most
+important option is <TT
+CLASS="OPTION"
+>--help</TT
+>, since it gives you a list of all
+the other options.  The configure script will detect your platform and choose
+the default GUI for your platform.  If the default choice is not what you
+want, use the <TT
+CLASS="OPTION"
+>--with-*</TT
+> options to override the default.  The
+options in the first table tell which GUI library is the default for each
+platform.  Starting in version 2.0, you can use multiple
+<TT
+CLASS="OPTION"
+>--with-*</TT
+> options at once to compile with multiple
+display libraries, and then choose between them at runtime with the
+display_library command in the configuration file.  Or, you can 
+let the configure script detect which libraries are on your system
+and use them all, by configuring with --with-all-libs.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The concept of platform detection and default GUIs was added in Bochs 1.4.
+In Bochs 1.3 and before, the X11 gui was always the default.</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN680"><P
+><B
+>Table 4. Defaults by Platform</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Platform</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Default GUI</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Extra compile flags</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>win32 or Cygwin</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-win32</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>If using nmake method, compile using cl /nologo /G6 /MT /W3 /GX /DNDEBUG /DWIN32 /D_WINDOWS /O2.  If using Visual C++ workspace, see the workspace file for compile settings.  See <A
+HREF="x589.html#COMPILING-WIN32"
+>Compiling on Win32 with Microsoft VC++</A
+> for instructions.
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>MacOS X or Darwin</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-carbon</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>-fpascal-strings -fno-common -arch ppc -Wno-four-char-constants -Wno-unknown-pragmas -Dmacintosh
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>MacOS 9 or before</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-macos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>none
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>BeOS</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-beos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>none
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>AmigaOS</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-amigaos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>none
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>any other platform</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-x11</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>none
+    </TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN714"><P
+><B
+>Table 5. Configure Options to Select the Display Library (optional)</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Option</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Comments</TH
+><TD
+>&nbsp;</TD
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-x11</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use X windows user interface.  On many operating systems,
+      Bochs will use X windows by default.
+       </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-win32-vcpp</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use Win32 GUI/Visual C++ environment.  This is for running
+          configure on a platform which supports running configure, so
+          that you may then transfer the configured code over to
+          an MS Win32/Visual C++ environment.  See 
+          <A
+HREF="x589.html#COMPILING-WIN32"
+>the Section called <I
+>Compiling on Win32 with Microsoft VC++</I
+></A
+> for details.
+          </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-win32</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use Win32 GUI, but compile with a Win32/gcc
+      environment such as Cygwin.  For Cygwin, see .conf.win32-cygwin
+      for the correct compile options.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-carbon</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Compile for MacOS X with the Carbon GUI.  See the
+      .conf.macosx file for the correct MacOS X compile options.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-amigaos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Compile for Amiga MorphOS.  This code is written by Nicholai
+      Benalal.</TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-rfb</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use RFB protocol to talk to AT&#38;T's <A
+HREF="http://www.uk.research.att.com/vnc/"
+TARGET="_top"
+>VNC Viewer</A
+>.  The RFB
+      code was written by Don Becker <TT
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:x-odus@iname.com"
+>x-odus@iname.com</A
+>&#62;</TT
+>,
+      who has a Bochs-RFB web page on his site, 
+      <A
+HREF="http://www.psyon.org/bochs-rfb/"
+TARGET="_top"
+>http://www.psyon.org/bochs-rfb</A
+>.
+      RFB mode has been tested in Linux and Win32.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-sdl</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>This option enables Dave Poirier's SDL gui interface.  To
+      compile with SDL, you must first install the SDL library
+      from <A
+HREF="http://libsdl.org/"
+TARGET="_top"
+>libsdl.org</A
+>.  You
+      can either get the source code and compile it yourself, or install
+      the development libraries for your platform (already compiled).
+      SDL is available for many platforms including Win32, Linux, IRIX,
+      MacOS, MacOS X, and BeOS.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-beos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use BeOS GUI.  The configure script will run natively
+       on BeOS; use this option when doing so.</TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-term</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use text-only gui with curses library.  Almost certainly
+      won't work right with the debugger or the control panel.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-macos</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use Macintosh/CodeWarrior environment.  This is for running
+        configure on a platform which supports running configure, so that
+        you may then transfer the configured code over to the
+        real compile environment.
+        </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-wx</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>wxWindows is a cross-platform C++ user interface library which
+      you can download for free at http://wxwindows.org.  The wxWindows
+      port of Bochs provides both a graphical configuration interface (for
+      editing bochsrc options) and a display.  It was written by Bryce Denney,
+      Don Becker, Dave Poirier, and Volker Ruppert.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-svga</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use SVGALIB library for Linux.  This allows a full-screen
+        text and graphics display without X windows.  The SVGALIB port
+	was written by Igor Popik.
+        </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-nogui</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>No native GUI; just use blank stubs.  This is if you don't
+          care about having video output, but are just running tests. 
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--with-all-libs</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Automatically detect which libraries are installed on your system
+      and enable them.  This option is still experimental; it might
+      enable libraries that are not usable and cause the compile to fail.
+      If you have trouble, just list the --with-* options for the specific
+      display libraries that you want.
+      </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>The remaining options can generally be used with any GUI.  For each option
+such as --enable-cdrom, you can also write --disable-cdrom to explicitly
+turn it off.</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN770"><P
+><B
+>Table 6. Configure Options</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Option</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Default</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Comments</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-cpu-level={<TT
+CLASS="OPTION"
+>3,4,5,6</TT
+>}</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>5</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Select which CPU level to emulate.  Choices are 3,4,5,6 which mean to
+      target 386, 486, Pentium, or Pentium Pro emulation.  Pentium Pro support
+      is quite incomplete, so level 5 is the best choice for now.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-cdrom</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enable use of a real CDROM.  The cdrom emulation is always present, and
+      emulates a drive without media by default.  You can use this option to
+      compile in support for accessing the media in your workstation's cdrom
+      drive.  The supported platforms are Linux, Solaris, OpenBSD, and Windows.
+      For other platforms, a small amount of code specific to your platform
+      must be written.  The module iodev/cdrom.cc is the place to add more
+      support.  For the most part, you need to figure out the right set of
+      ioctl() calls.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-sb16={<TT
+CLASS="OPTION"
+>dummy, win, linux</TT
+>}</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enable Sound Blaster emulation.  SB16 output is only supported for
+      Windows or Linux.  The <TT
+CLASS="CONSTANT"
+>dummy</TT
+> option means to support
+      an SB16, but don't use an output device.  So for example, you might use
+      <TT
+CLASS="OPTION"
+>--enable-sb16=linux</TT
+>. See <A
+HREF="x1401.html"
+>the Section called <I
+>Sound Blaster 16 Emulation</I
+> in the chapter called <I
+>Setup</I
+></A
+>
+      for more info.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-config-interface</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enables configuration menus when you first start Bochs.  The menus let
+      you read in a bochsrc file, edit some options, and save the new bochsrc
+      before starting the simulation.  Also enables a runtime menu which lets
+      you change certain settings during simulation.  See the config_interface
+      option in bochsrc for how to select between the text interface and
+      wxWindows.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-new-pit</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enables Greg Alexander's PIT model, written during Summer 2001.  This
+      model was written from scratch to be much more complete than the old
+      Bochs PIT model, which was missing many registers and features.
+      If you disable this option, the old PIT model will be used instead.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-slowdown</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enables Greg Alexander's experimental "slowdown timer" which tries to
+      keep the Bochs simulation time in sync with real time.  When Bochs
+      is executing many instructions, the slowdown timer will have no effect.
+      When Bochs is idle, or just waiting around for an interrupt, the 
+      slowdown timer kicks in to prevent Bochs time from speeding ahead.
+      This should solve problems like, "Why does my screen saver turn on
+      after 30 seconds?"
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-idle-hack</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Enables Roland Mainz's experimental idle code, which is intended to
+      keep Bochs from always using 100% of CPU time.  When Bochs is waiting
+      around for an interrupt, the idle code uses a select() loop and some
+      X11 tricks to wait until user input arrives.  This is designed to 
+      keep Bochs responsive while still yielding to other processes when
+      Bochs is idle.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-ne2000</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable NE2000 network card support.  This requires a
+      low-level component to be written for each OS.  The NE2000
+      option is only supported on FreeBSD, OpenBSD, Linux, and Windows 
+      95/98/NT/2K.  When enabled and configured, the NE2000 device model can
+      talk to any computer on the network EXCEPT FOR the local host.
+      Exception: Under most circumstances, Bochs can talk to the local host
+      on Windows, and in the ethertap interface for Linux.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-vbe</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Use VGA BIOS Extensions (VBE) by Jeroen Janssen.  To take
+      advantage of the VBE, you must tell Bochs to use the LGPL VGA BIOS
+      version 0.3a or higher in the vgaromimage line of your bochsrc file.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-fpu</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>If you want to compile bochs to make use of the FPU emulator
+          written by Bill Metzenthen (the one used by the Linux kernel),
+          use this option.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-plugins</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Plugins are shared libraries that can be loaded on demand.  Example: the
+      serial device is implemented as a plugin.  In UNIX, the serial plugin is
+      called libbx_serial.so.  When Bochs reads its configuration file, if the
+      serial device is enabled it loads libbx_serial.so.  See the Features
+      section for supported platforms.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-guest2host-tlb</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support guest to host address TLB for speed</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-repeat-speedups</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support repeated I/O and memory copy speedups</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-icache</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support instruction cache for faster execution</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-host-specific-asms</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support for running native x86 instructions on an x86 machine</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-all-optimizations</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Turn on the enables for all speed optimizations that the 
+      developers believe are safe to use.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-ignore-bad-msr</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ignore MSR references that Bochs does not understand, instead of doing a panic</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-x86-64</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Add support for AMD's x86-64 instruction set, written by Peter Tattam.
+      The AMD x86-64 support is about 90% complete and is still experimental.
+      The code has been tested on a limited number of test programs.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-mmx</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Add support for MMX instructions, written by Stanislav Shwartsman.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-sse=LEVEL</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Add support for SSE instructions, written by Stanislav Shwartsman.
+      For SSE only, use --enable-sse=1.  For SSE and SSE2, use --enable-sse=2.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-split-hd</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      When enabled, this allows a series of partial hard disk image files to be
+      treated as if it was one large file.  The .bochsrc specifies the first
+      partial HD image (example win95-1) and then bochs searches for the other
+      partial images in as a sequence (win95-2, win95-3, etc.) and opens them
+      all.  Then, it treats the series as if there was a single large file
+      created by "cat win95-1 win95-2 win95-3".  This trick works for both
+      diskc and diskd.  All files must be a multiple of 512 bytes.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-debugger</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>        Compile in support for Bochs internal command-line debugger.  This has
+        nothing to do with x86 hardware debug support.  It is a more powerful
+        and non-intrusive native debugger.  Enabling this will of course slow
+        down the emulation.  You only need this option if you know you need it.
+        After you have run ./configure, you may want to edit 'config.h' to
+        customize the debugger further.  Look at the section entitled 'OPTIONAL
+        DEBUGGER SECTION'.  <IMG
+SRC="../images/undercon.gif"> add cross references
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-readline</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>detected by configure</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Compile the debugger with the GNU readline library, which gives
+      command line editing and history.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-disasm</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Compile in support for built-in disassembler.  Bochs has
+          a built-in disassembler, which is useful if you either
+          run the built-in debugger (--enable-debugger), or want
+          disassembly of the current instruction when there is a
+          panic in bochs.  You don't need this option.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-cpp</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Use .cpp as C++ suffix.  Renames all the .cc files to .cpp for use with
+      compilers which want that, like MS C++ compilers.  Don't use this option
+      unless you know you need it.  The configure shortcut script for
+      Win32 uses this option.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-docbook</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>detected</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Build the docbook documentation in doc/docbook.  The configure
+      script will enable this option automatically if you have a program
+      called docbook2html installed.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-iodebug</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes if debugger is on</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Dave Poirier has written an experimental interface to the debugger
+      using I/O ports, so that software running in the guest OS can access
+      features of the debugger.  You only want this option if you are 
+      developing guest OS code for use in Bochs.  In other words, most people
+      don't.  Also, it should only be used with --enable-debugger.  See section
+      <IMG
+SRC="../images/undercon.gif"> in the Developer's Guide for details.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-x86-debugger</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>X86 debugger support.  If the software you run in bochs
+          needs to use the x86 hardware debugging facilities such as
+          DR0..DR8, instruction and data breakpoints etc., then you
+          should use this option.  Otherwise don't use it, as it
+          will slow down the emulation.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-external-debugger</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> enable external debugger support </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-pci</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable limited i440FX PCI support.  This is not complete.
+          Don't use this option yet.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-4meg-pages</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support 4 megabyte page extensions</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-pae</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support physical address extensions</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-global-pages</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>support global pages</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-port-e9-hack</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>yes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Writes to port e9 go to console.  Unless you know you want
+          this option, you don't.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-processors={<TT
+CLASS="OPTION"
+>1,2,3,...,15</TT
+>}</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>1</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      By changing to more than 1 processor, you enable SMP simulation.  This
+      allows you to boot Linux and maybe other OSes in SMP mode, and bochs will
+      simulate all the different CPUs and communication between them.  Do not
+      expect this option to speed up your simulation!  On the contrary, it has
+      to spend extra time simulating the different CPUs (even if they're mostly
+      idle) and the communication between them.  Use it to try out an SMP OS if
+      you don't have an SMP machine, or to debug SMP OS drivers.  Click
+      <A
+HREF="x1953.html"
+>here</A
+> for more details on SMP in Bochs.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-apic</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      In an SMP machine, there is an APIC (Advanced Programmable Interrupt
+      Controller) built into each processor and a separate I/O APIC.  The
+      APICs are used for inter-processor communication, so they must be
+      enabled for SMP to work.  The default is "no" when there is one
+      processor and "yes" when there is more than one processor.  Normally,
+      the default is correct and you would never need to type this option.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-instrumentation=<TT
+CLASS="OPTION"
+>directory</TT
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Compile in support for instrumentation.  This allows you to collect
+      instrumentation data from bochs as it executes code.  You have to create
+      your own instrumentation library and define the instrumentation macros
+      (hooks in bochs) to either call your library functions or not, depending
+      upon whether you want to collect each piece of data.  [Kevin wrote: I
+      broke some of the hooks when I recoded the fetch/decode loop.]
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-simid={0, 1}</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>0</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      CPU simulator ID.  You likely don't need this option.  If you are using
+      bochs to cosimulate, that is to run multiple simulators in parallel so
+      that you can compare results and check for divergence, each simulator
+      needs an ID.  When you only have one CPU simulator (as usual) the default
+      of 0 is fine.  [Kevin wrote: I use this option occasionally to run 2
+      versions of bochs against each other and check for divergence, to find
+      bugs etc.  This option gets broken more than not due to architectural
+      changes, and I usually end of fixing it each time I use it.]
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-num-sim={1, 2}</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>1</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Number of CPU simulators.  The default of 1 is likely what you want, so
+      don't use this option.  It is for assigning an ID to the simulator, for
+      cosimulation described above.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>--enable-time0=n</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>no</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      Start CMOS clock at at time0 of n instead of using time().  You likely
+      don't want this option.  When debugging, it is very helpful to have
+      deterministic execution, and the clock is something that can skew
+      determinism.  If you supply this option, pass it a value returned by the
+      time(NULL) call, relating to the time you want bochs to start the CMOS
+      clock from.  For instance, '--enable-time0=917385580'.  If you use this
+      option but don't provide a value, configure uses a default value.  Note
+      that the time0 option in .bochsrc will override this value.  Without this
+      option, the CMOS clock uses a time0 based on the value of time(NULL),
+      which is probably what you want.
+      </TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN949">Transcript of Successful Compilation</H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  user$ <B
+CLASS="COMMAND"
+>ls -l bochs-1.2.1.tar.gz</B
+>
+  -rw-rw-r--    1 user     user       887993 Sep 15 23:24 bochs-1.2.1.tar.gz
+  user$ <B
+CLASS="COMMAND"
+>gunzip -c bochs-1.2.1.tar.gz | tar -xvf -</B
+>
+  bochs-1.2.1/
+  bochs-1.2.1/bios/
+  bochs-1.2.1/bios/BIOS-bochs-2-processors
+  bochs-1.2.1/bios/Makefile.in
+    .
+    .
+    .
+  bochs-1.2.1/patches/NOTES
+  bochs-1.2.1/patches/patch.4meg-pages
+  bochs-1.2.1/patches/patch.goswin-changes
+  user$ <B
+CLASS="COMMAND"
+>cd bochs-1.2.1</B
+>
+  user$ <B
+CLASS="COMMAND"
+>./configure --enable-cdrom</B
+>
+  creating cache ./config.cache
+  checking for gcc... gcc
+  checking whether the C compiler (gcc  ) works... yes
+  checking whether the C compiler (gcc  ) is a cross-compiler... no
+  checking whether we are using GNU C... yes
+  checking whether gcc accepts -g... yes
+    .
+    .
+    .
+  creating misc/Makefile
+  creating dynamic/Makefile
+  creating fpu/Makefile
+  creating config.h
+  user$ <B
+CLASS="COMMAND"
+>make</B
+>
+  cd iodev &#38;&#38; \
+  make CC="gcc" CXX="c++" CFLAGS="-g -O2  " CXXFLAGS="-g -O2  " LDFLAGS="" LIBS="" X_LIBS="-L/usr/X11R6/lib" X_PRE_LIBS="-lSM -lICE" prefix="/usr/local" exec_prefix="/usr/local" bindir="/usr/local/bin" infodir="" libiodev.a
+  make[1]: Entering directory `/tmp/bochs-1.2.1/iodev'
+  c++ -c -g -O2    -I.. -I../instrument/stubs devices.cc -o devices.o
+  c++ -c -g -O2    -I.. -I../instrument/stubs pic.cc -o pic.o
+  c++ -c -g -O2    -I.. -I../instrument/stubs pit.cc -o pit.o
+  c++ -c -g -O2    -I.. -I../instrument/stubs unmapped.cc -o unmapped.o
+  c++ -c -g -O2    -I.. -I../instrument/stubs cmos.cc -o cmos.o
+    .
+    .
+    .
+  echo done
+  done
+  c++ -o bochs -g -O2   main.o load32bitOShack.o state_file.o pc_system.o osdep.o \
+     iodev/libiodev.a \
+     cpu/libcpu.a memory/libmemory.a gui/libgui.a \
+     fpu/libfpu.a \
+     -L/usr/X11R6/lib -lSM -lICE -lX11
+  gcc -c -g -O2    -I. -Iinstrument/stubs misc/bximage.c -o misc/bximage.o
+  c++ -o bximage -g -O2   misc/bximage.o
+  user$ <B
+CLASS="COMMAND"
+>su</B
+>
+  root# <B
+CLASS="COMMAND"
+>make install</B
+>
+  cd iodev &#38;&#38; \
+  make CC="gcc" CXX="c++" CFLAGS="-g -O2  " CXXFLAGS="-g -O2  " LDFLAGS="" LIBS="" X_LIBS="-L/usr/X11R6/lib" X_PRE_LIBS="-lSM -lICE" prefix="/usr/local" exec_prefix="/usr/local" bindir="/usr/local/bin" infodir="" libiodev.a
+  make[1]: Entering directory `/tmp/bochs-1.2.1/iodev'
+    .
+    .
+    .
+  /usr/local/bochs/1.2.1/install-x11-fonts
+  Looking for fonts to install... font/
+  Looking for X11 Font Path... /usr/lib/X11/fonts
+  Installing vga.pcf... ok    (it was already there)
+  Running mkfontdir...
+  Done installing Bochs fonts for X11.
+  root# <B
+CLASS="COMMAND"
+>exit</B
+>
+  user$ _</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="COMPILING-WIN32">Compiling on Win32 with Microsoft VC++</H2
+><P
+>The standard compile uses the configure script, but the Windows platform
+cannot run the configure script natively.
+The current solution to this problem is that the Bochs
+configure script must be run on a different platform that does support
+shell scripts, with options that cause it to configure for a Win32 
+platform instead of the native one.  Many people have access to a UNIX
+machine that could run the configure script, or you can use Cygwin to
+run the configure script
+<A
+NAME="AEN964"
+HREF="#FTN.AEN964"
+>[4]</A
+>.</P
+><P
+>Download the Bochs sources on a machine that can run shell scripts.
+Edit the configure shortcut script <TT
+CLASS="FILENAME"
+>.conf.win32-vcpp</TT
+>
+if you want to adjust the configure options.  Then type these commands
+in the Bochs source directory:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  sh .conf.win32-vcpp
+  make win32_snap</PRE
+></TD
+></TR
+></TABLE
+>
+These commands will run the configure step, produce VC++ makefiles and 
+workspace files, and pack it all into a .zip file in the directory above the
+source directory <A
+NAME="AEN969"
+HREF="#FTN.AEN969"
+>[5]</A
+>.  The .zip file is all ready to transfer to the target Windows
+machine to be unzipped and compiled.  Or, if you run the sh/make steps in
+Cygwin, you are already on the target machine so you don't need the .zip
+file.</P
+><P
+>When you have the Win32 sources transferred to a Windows machine with VC++,
+find the workspace file called <TT
+CLASS="FILENAME"
+>bochs.dsw</TT
+> and load it in
+VC++.  Choose <B
+CLASS="COMMAND"
+>Project:Set Active Project</B
+> and be sure that
+"bochs" is selected.  Then choose <B
+CLASS="COMMAND"
+>Build:Build bochs.exe</B
+>.
+This will build all the required libraries (iodev, cpu, etc.) and the auxiliary
+programs <TT
+CLASS="FILENAME"
+>bximage.exe</TT
+> and <TT
+CLASS="FILENAME"
+>niclist.exe</TT
+>.</P
+><P
+>Using workspaces is easy and intuitive, but there is one caveat.  The
+workspaces come directly out of a ZIP file in
+<TT
+CLASS="FILENAME"
+>build/win32/workspace.zip</TT
+>, and they are not controlled by
+the configure script.  When you compile with certain configure options (e.g.
+--with-sdl) you need to link with additional libraries.  For now you must
+add them to the VC++ workspace by hand.  In version 2.0, we have improved 
+the situation considerably by adding #if...#endif around every optional file
+and including nearly every Bochs source file in the workspace.  This solves the
+problem of having to manually add source files to the workspace when you turn
+on configure options such as --enable-debugger.  The problem of adding
+link libraries remains unresolved.</P
+><DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>To compile with the Bochs debugger enabled, add "--enable-debugger" to the
+configure line in <TT
+CLASS="FILENAME"
+>.conf.win32-vcpp</TT
+> before running it.
+No modifications to the workspace are necessary.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>An alternative way to compile is to run <TT
+CLASS="FILENAME"
+>nmake.exe</TT
+> in an
+MS-DOS window.  Instead of using the workspace files, nmake uses the Bochs
+makefiles that are generated by configure.  The workspace file was new in
+version 1.3; before that, nmake was the only way to compile Bochs in VC++.
+Starting with version 1.4, the workspace is used to build the release 
+binaries.</P
+><P
+>The <B
+CLASS="COMMAND"
+>make install</B
+> for Win32 is presently broken.  In the
+future, a <B
+CLASS="COMMAND"
+>make install</B
+> that runs in Cygwin may be provided.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="COMPILE-CYGWIN">Compiling on Win32 with Cygwin</H2
+><P
+>Cygwin is a free Unix-like environment for Windows written by
+Steve Chamberlain and now maintained by RedHat, Inc.  You can download
+it from <A
+HREF="http://www.cygwin.com"
+TARGET="_top"
+>www.cygwin.com</A
+>.  Because
+Cygwin supports the configure script and uses GNU gcc/g++, you can use the
+standard compile process.  The configure script should automatically detect
+Cygwin and add "-mno-cygwin -DWIN32" to the compiler options.  You should
+get a working Bochs if you just type:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  configure
+  make</PRE
+></TD
+></TR
+></TABLE
+>
+
+Optionally, you can use the configure shortcut script for Cygwin,
+<TT
+CLASS="FILENAME"
+>.conf.win32-cygwin</TT
+>, instead of running configure
+directly.  If this script is close to what you need, just edit the script and
+then run it.  To use the configure shortcut script and compile in Cygwin, the
+commands are
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  sh .conf.win32-cygwin
+  make</PRE
+></TD
+></TR
+></TABLE
+>
+These options are known to work in Cygwin, so they are enabled in the configure
+shortcut file:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  --enable-cdrom 
+  --enable-sb16=win 
+  --enable-ne2000
+  --enable-vbe</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN997">Compiling on MacOS 9 with CodeWarrior</H2
+><P
+>It is possible that this hasn't been tried since 1999.  In theory, you run
+<TT
+CLASS="FILENAME"
+>sh .conf.macos</TT
+> on a Unix box to build the 
+makefiles and headers, copy the whole thing over to a Mac, and then
+use CodeWarrior to compile.  Since it hasn't been tested in so long,
+it is quite likely that some work is needed to bring the Mac port up 
+to date.</P
+><P
+>If you are interested and have the required MacOS development tools, please
+let us know.  Someone requests a MacOS port almost once a month, but none of
+the developers know how to help them.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1002">Compiling on MacOS X</H2
+><P
+>The port to MacOS X with Carbon API by Emmanuel Mailliard is quite new, and the
+configure and makefile support was added by Bryce Denney.  You will need
+the compiler and libraries from the development tools CD.  Bochs should
+configure and compile with the Carbon GUI if you simply type:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  configure
+  make</PRE
+></TD
+></TR
+></TABLE
+>
+Optionally, you can use the configure shortcut script for MacOS X,
+<TT
+CLASS="FILENAME"
+>.conf.macosx</TT
+>, instead of running configure directly.
+If this script is close to what you need, just edit the script and then
+run it.  To use the configure shortcut script and compile, the commands
+are
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+> 
+  sh .conf.macosx
+  make</PRE
+></TD
+></TR
+></TABLE
+>
+
+MacOS X has a special format for an application bundle, which looks like a
+directory that contains the required resource files and binaries.  The Makefile
+currently creates this application bundle "by hand" using mkdir and copy, which
+is surely the wrong way to do it.  Bryce doesn't know the official way to
+create an application from a Makefile, so this hack will remain until a real
+Mac developer helps to clean it up.</P
+><P
+>On MacOS X the default GUI is the Carbon interface, but you can also try other
+Bochs GUIs.  Use --enable-x11 for X windows, --enable-rfb for VNC/RFB, or
+--enable-sdl for SDL.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1009">Compiling on BeOS</H2
+><P
+>Kevin Lawton ported Bochs to BeOS.  Bernd Korz has taken over the port,
+and is working on raw cdrom and raw floppy support.  As of Bochs 1.4, it should
+compile if you just type "configure &#38;&#38; make", because configure will
+detect the BeOS platform and assume you want the BeOS GUI.  Optionally,
+you can use the configure shortcut script for BeOS, <TT
+CLASS="FILENAME"
+>.conf.beos</TT
+>.
+This shortcut script uses the SDL gui by default.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1013">Compiling on Amiga/MorphOS</H2
+><P
+>Nicholai Benalal created this port to MorphOS running on Amiga.  It should
+compile with 
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  configure &#38;&#38; make</PRE
+></TD
+></TR
+></TABLE
+>
+If the platform is not detected properly, you might need to use
+--enable-amigaos as a configure option.  Optionally, you can use
+the configure shortcut script, <TT
+CLASS="FILENAME"
+>.conf.amigaos</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1018">Compiling with the RFB interface</H2
+><P
+>Don Becker's RFB interface allows you to view the Bochs display with the
+AT&#38;T's <A
+HREF="http://www.uk.research.att.com/vnc/"
+TARGET="_top"
+>VNC Viewer</A
+>.
+The protocol used between a VNC server and a VNC viewer is called RFB.
+Because the RFB code in Bochs is written with portable network socket and POSIX
+thread code, it can be compiled on many platforms.  No additional libraries
+are required.  To try it, type:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  configure --with-rfb
+  make</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1023">Compiling with the SDL interface</H2
+><P
+>Dave Poirier has written an SDL interface for Bochs.  Simple DirectMedia
+Layer, or SDL, is a cross-platform multimedia library distributed from
+<A
+HREF="http://libsdl.org"
+TARGET="_top"
+>libsdl.org</A
+>.  SDL supports 
+Win32, Linux, IRIX, MacOS, MacOS X, BeOS, and AmigaOS.</P
+><P
+>To compile Bochs with the SDL interface you need to download the SDL
+development library.  Either get the development library for your platform,
+or download the sources and compile it yourself.  Then, go into the 
+Bochs directory and type:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  configure --with-sdl
+  make</PRE
+></TD
+></TR
+></TABLE
+></P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>This has only been tested on Linux at the time this documentation was written.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>To compile in Microsoft VC++, you have to configure on a different system.
+Here's the procedure:
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>- On a machine that can run shell scripts, such as Cygwin, run
+    configure --target=pentium-windows --with-sdl
+    make win32_snap
+- Copy the resulting ZIP file to your Windows box and unzip it.
+- Load up workspace called bochs.dsw in VC++ 6.0
+- Double click "gui files"
+- Remove gui/win32.cpp from the project, and add gui/sdl.cpp instead.
+- Edit the settings of "gui files".  Under C/C++ tab, category=preprocessor,
+  additional include directories, add the directory where SDL/SDL.h can be
+  found.
+- Edit the settings of the "bochs files" project.  Under the Link tab,
+  category=General, add SDL.lib to object/library modules list.  Then in
+  category=Input, add the path of SDL.lib to additional library path.  Click
+  ok.
+- Select Build:Build Bochs.exe</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1033">Building an RPM on Linux</H2
+><P
+>RPM stands for "RedHat Package Manager."  An RPM is a compressed file
+containing files to be installed on your system.  Bochs 
+has a special shell script called <TT
+CLASS="FILENAME"
+>make-rpm</TT
+> that helps
+to build an RPM of Bochs.  Start with a clean source directory.  Edit
+.conf.linux first if you want to adjust the configure options.  
+Then, type:
+
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  ./build/redhat/make-rpm | tee /tmp/build.txt</PRE
+></TD
+></TR
+></TABLE
+>
+
+When this command completes, you should have a source RPM and a binary RPM of
+Bochs in the current directory.  The <B
+CLASS="COMMAND"
+>tee</B
+> part of the 
+command (optional) saves a transcript of the build process into /tmp/build.txt,
+which is very useful if anything goes wrong.  Instructions for installing an
+RPM are <A
+HREF="x489.html#LINUXRPM"
+>here</A
+>.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>In the past, you had to build rpms as root, but as of version 2.0 you can build
+them as a normal user.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1042">Compile Problems</H2
+><P
+><IMG
+SRC="../images/undercon.gif"></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>what if configure fails?
+- tar up config.* and send to bochs-testing@tlw.com
+- report the problem with a source forge bug report.
+
+what if make fails?
+- try make dist-clean, and run configure and make again
+- use configure options to disable options.  For example, if errors in 
+fpu/fpu_system.h, you could try --disable-fpu.
+- search for the error on the Bochs website (bug reports, patches)
+- if familiar with C++, many minor problems can be corrected
+- move to more stable code.  if it's CVS, see if a release version will
+  compile.  Report problem to bochs-developers.
+- report the problem with a source forge bug report.</PRE
+></TD
+></TR
+></TABLE
+>&#13;</P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN620"
+HREF="x589.html#AEN620"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The syntax for bash and ksh is given.  In csh and variants, use the syntax
+<B
+CLASS="COMMAND"
+>setenv <TT
+CLASS="REPLACEABLE"
+><I
+>VARIABLE</I
+></TT
+>
+<TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+></B
+> to change environment variables.
+Do not use an equal sign for csh!</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN658"
+HREF="x589.html#AEN658"
+>[2]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>This is different from the terminology of some other projects, and it may cause
+confusion.  Sometimes "clean" implies that all subdirectories are affected.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN669"
+HREF="x589.html#AEN669"
+>[3]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+><IMG
+SRC="../images/undercon.gif"> We should mention what gets installed, and where.
+    /usr/local/bin/bochs (and bximage)
+    /usr/local/share/bochs/*
+    /usr/local/share/man/man1/bochs*.1 (and bximage.1)
+    make install_dlx option</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN964"
+HREF="x589.html#AEN964"
+>[4]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Because Bochs depends so much on the configure script, if you are doing
+much win32 Bochs development, you should consider downloading Cygwin
+so that you can run the configure step natively.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN969"
+HREF="x589.html#AEN969"
+>[5]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>If the source directory is <TT
+CLASS="FILENAME"
+>/home/joe/bochs-win32</TT
+>, the
+resulting .zip file is in <TT
+CLASS="FILENAME"
+>/home/joe/bochs-win32.zip</TT
+>.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x489.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1048.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installing a Binary</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c323.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installing the VGA font (X windows only)</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

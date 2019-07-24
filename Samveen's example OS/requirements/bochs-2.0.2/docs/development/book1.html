@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Bochs Developers Guide</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="NEXT"
+TITLE="Resources for developers"
+HREF="c14.html"></HEAD
+><BODY
+CLASS="BOOK"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2">Bochs Developers Guide</H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN5">Kevin Lawton</H3
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN8">Bryce Denney</H3
+><H4
+CLASS="EDITEDBY"
+>Edited by</H4
+><H3
+CLASS="EDITOR"
+>Michael Calabrese</H3
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="c14.html"
+>Resources for developers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c14.html#AEN17"
+>Setting up CVS write access</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c14.html#AEN20"
+>Install ssh and cvs</A
+></DT
+><DT
+><A
+HREF="c14.html#AEN33"
+>ssh to cvs.sf.net</A
+></DT
+><DT
+><A
+HREF="c14.html#AEN41"
+>Set CVS_RSH environment variable to ssh</A
+></DT
+><DT
+><A
+HREF="c14.html#AEN45"
+>cvs checkout</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x54.html"
+>Using CVS write access</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x54.html#AEN56"
+>Checking in files</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x72.html"
+>SourceForge bug, feature, and patch trackers</A
+></DT
+><DT
+><A
+HREF="x76.html"
+>Ideas for other sections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="c80.html"
+>About the code</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c80.html#AEN82"
+>How to add keymapping in a GUI client</A
+></DT
+><DT
+><A
+HREF="x86.html"
+>Directory Structure</A
+></DT
+><DT
+><A
+HREF="x90.html"
+>Configure Scripting</A
+></DT
+><DT
+><A
+HREF="x94.html"
+>Log Functions</A
+></DT
+><DT
+><A
+HREF="x98.html"
+>Emulator Objects</A
+></DT
+><DT
+><A
+HREF="x102.html"
+>timers</A
+></DT
+><DT
+><A
+HREF="x106.html"
+>Sound Blaster 16 Emulation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x106.html#AEN112"
+>How well does it work?</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN117"
+>Output to a sound card</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN120"
+>Installation on Linux</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN125"
+>Configuring bochs</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN133"
+>Runtime configuration</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN146"
+>Features planned for the future</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN153"
+>Description of the sound output classes</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN159"
+>Files</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN169"
+>Classes</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN186"
+>Methods</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN193"
+>bx_sound_OS_c(bx_sb16_c*sb16)</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN207"
+>~bx_sound_OS_c()</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN210"
+>int openmidioutput(char *device)</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN222"
+>Description of the parameters:</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN232"
+>int midiready()</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN248"
+>int sendmidicommand(int delta, int command, int length, Bit8u data[])</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN270"
+>int closemidioutput()</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN282"
+>int openwaveoutput(char *device)</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN316"
+>int startwaveplayback(int frequency, int bits, int stereo, int format)</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN339"
+>Format Bits</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN343"
+>int waveready()</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN353"
+>int sendwavepacket(int length, Bit8u data[])</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN376"
+>Sequences of Databytes Table</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN381"
+>int stopwaveplayback()</A
+></DT
+><DT
+><A
+HREF="x106.html#AEN388"
+>int closewaveoutput()</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c399.html"
+>Debugger</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c399.html#AEN401"
+>compile with debugger support</A
+></DT
+><DT
+><A
+HREF="x405.html"
+>get started in debugger</A
+></DT
+><DT
+><A
+HREF="x409.html"
+>command reference</A
+></DT
+><DT
+><A
+HREF="x413.html"
+>techniques</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="c417.html"
+>Coding</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c417.html#AEN419"
+>coding conventions</A
+></DT
+><DT
+><A
+HREF="x423.html"
+>patches:</A
+></DT
+><DT
+><A
+HREF="x427.html"
+>life cycle of a CVS release</A
+></DT
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c14.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Resources for developers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

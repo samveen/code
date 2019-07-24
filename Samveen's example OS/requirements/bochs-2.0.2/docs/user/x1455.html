@@ -1,0 +1,1490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>How to write your own keymap table</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Setup"
+HREF="c1061.html"><LINK
+REL="PREVIOUS"
+TITLE="Sound Blaster 16 Emulation"
+HREF="x1401.html"><LINK
+REL="NEXT"
+TITLE="Using Bochs"
+HREF="c1838.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1401.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c1838.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="KEYMAP">How to write your own keymap table</H1
+><P
+>Christophe Bothamy wrote the keymapping code for Bochs, and provided this
+documentation for how to create new keymaps.  Keymapping was first 
+implemented for X windows only, so there are many references to X-specific
+values in this section. In Bochs 2.0 keymapping is also available for SDL 
+(Linux port) and wxWindows (wxGTK port).</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  The standard US Keyboard looks like this:
+
+          -------------------------------------------
+  Top row Esc F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 
+          -------------------------------------------
+  2nd row ` 1 2 3 4 5 6 7 8 9 0 - = \ Back
+          -------------------------------------------
+  3rd row Tab Q W E R T Y U I O P [ ] Enter
+          -------------------------------------------
+  4rd row Caps A S D F G H J K L ; '
+          -------------------------------------------
+  5rd row lShift l\ Z X C V B N M , . / rShift
+          -------------------------------------------
+  6rd row lCtrl lAlt Space rAlt rCtrl
+          -------------------------------------------</PRE
+></TD
+></TR
+></TABLE
+><P
+>Each key of the US keyboard maps to a Bochs constant named
+BX_KEY_<TT
+CLASS="REPLACEABLE"
+><I
+>symbol</I
+></TT
+>. You can find the current list of
+BX_KEY_<TT
+CLASS="REPLACEABLE"
+><I
+>symbol</I
+></TT
+> in 
+<A
+HREF="x1455.html#BX-KEY-TABLE"
+>the BX_KEY table</A
+>, below. Please note that
+there is only one BX_KEY_<TT
+CLASS="REPLACEABLE"
+><I
+>symbol</I
+></TT
+> for each physical
+key.</P
+><P
+>Now, for each key of the US keyboard, look at which symbols you can type on your
+real keyboard. Each symbol maps to a X-windows
+XK_<TT
+CLASS="REPLACEABLE"
+><I
+>symbol</I
+></TT
+> constant.  In 
+<TT
+CLASS="FILENAME"
+>X11/keysymdef.h</TT
+>, you will find the list of all possible
+XK_<TT
+CLASS="REPLACEABLE"
+><I
+>symbol</I
+></TT
+> on your system.  Alternatively, you can
+use a small utility called "xev" that prints out the symbol names of a pressed
+key. Note that the symbol name given by xev does not contain the XK_ prefix.
+Don't forget to add a line for every symbol you can type on each key.  For the
+key BX_KEY_A, you can type both lowercase 'a' and uppercase 'A', so you would
+need two different entries. </P
+><P
+>You can then create your own map file. Keymap files are found in the
+"gui/keymaps" directory in the source code, or in the "keymaps" directory in
+binary releases.  Look at the existing keymap file as an example, and create a
+file containing one line for each symbol.  The first column tells what key or
+combination of keys can be used to produce a given symbol.  The second column
+is the ASCII equivalent for that symbol, or a special keyword (none, space,
+return, tab, backslash, or apostrophe).  The third column is the X windows
+keysym for that symbol.  </P
+><P
+>For example :
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>BX_KEY_0                                      '0'        XK_0
+BX_KEY_1                                      '1'        XK_1
+BX_KEY_2                                      '2'        XK_2
+BX_KEY_0+BX_KEY_SHIFT_L                       ')'        XK_parenright
+BX_KEY_1+BX_KEY_SHIFT_L                       '!'        XK_exclam
+BX_KEY_2+BX_KEY_SHIFT_L                       '@'        XK_at
+BX_KEY_A                                      'a'        XK_a
+BX_KEY_B                                      'b'        XK_b
+BX_KEY_A+BX_KEY_SHIFT_L                       'A'        XK_A
+BX_KEY_B+BX_KEY_SHIFT_L                       'B'        XK_B
+BX_KEY_TAB                                    tab        XK_Tab
+BX_KEY_ENTER                                  return     XK_Return
+BX_KEY_F1                                     none       XK_F1
+BX_KEY_F2                                     none       XK_F2
+BX_KEY_F3                                     none       XK_F3</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>Now that there are several keymap files in the Bochs distribution, it is
+easiest to copy an existing keymap and follow the examples you see.  When it
+works, be sure to send it to the mailing list or post it on Source Forge so
+that we can include it in the next release.  You may need to look up some of
+your country specific X11 symbols in <TT
+CLASS="FILENAME"
+>X11/keysymdef.h</TT
+>.</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="BX-KEY-TABLE"><P
+><B
+>Table 4. BX_KEY constants</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="CENTER"
+VALIGN="TOP"
+> BX_KEY constant </TH
+><TH
+ALIGN="CENTER"
+VALIGN="TOP"
+> Keyboard Symbol </TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_CTRL_L</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> left Ctrl </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SHIFT_L</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> left Shift </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F1</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F1 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F2</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F2 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F3</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F3 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F4</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F4 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F5</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F5 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F6</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F6 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F7</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F7 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F8</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F8 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F9</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F9 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F10</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F10 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F11</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F11 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F12</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F12 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_CTRL_R</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> right Ctrl </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SHIFT_R</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> right Shift </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_CAPS_LOCK</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> CapsLock </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_NUM_LOCK</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> NumLock </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_ALT_L</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> left Alt </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_ALT_R</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> right Alt </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_A</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> A </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_B</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> B </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_C</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> C </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_D</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> D </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_E</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> E </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_F</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> F </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_G</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> G </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_H</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> H </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_I</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> I </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_J</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> J </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_K</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> K </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_L</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> L </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_M</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> M </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_N</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> N </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_O</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> O </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_P</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> P </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_Q</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Q </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_R</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> R </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_S</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> S </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_T</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> T </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_U</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> U </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_V</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> V </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_W</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> W </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_X</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> X </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_Y</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Y </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_Z</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Z </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_0</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 0 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_1</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 1 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_2</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 2 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_3</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 3 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_4</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 4 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_5</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 5 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_6</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 6 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_7</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 7 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_8</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 8 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_9</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> 9 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_ESC</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Esc </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SPACE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> SpaceBar </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SINGLE_QUOTE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> ' </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_COMMA</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> , </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_PERIOD</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> . </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SLASH</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> / </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SEMICOLON</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> ; </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_EQUALS</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> = </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_LEFT_BRACKET</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> [ </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_BACKSLASH</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> \ </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_RIGHT_BRACKET</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> ] </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_MINUS</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> - </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_GRAVE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> ` </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_BACKSPACE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> BackSpace </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_ENTER</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Enter </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_TAB</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Tab </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_LEFT_BACKSLASH</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> left \ </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_PRINT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> PrintScreen </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_SCRL_LOCK</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> ScrollLock </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_PAUSE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Pause </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INSERT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Ins </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_DELETE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Del </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_HOME</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Home </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_END</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> End </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_PAGE_UP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> PageUo </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_PAGE_DOWN</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> PageDown </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_ADD</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad + </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_SUBTRACT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad - </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_END</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 1 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_DOWN</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 2 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_PAGE_DOWN</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 3 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_LEFT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 4 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_5</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 5 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_RIGHT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 6 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_HOME</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 7 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_UP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 8 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_PAGE_UP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 9 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_INSERT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad 0 </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_DELETE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad . </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_ENTER</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad Enter </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_MULTIPLY</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad * </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_KP_DIVIDE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Numeric Keypad / </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_UP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> UpArrow </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_DOWN</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> DownArrow </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_LEFT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> LeftArrow </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_RIGHT</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> RightArrow </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_WIN_L</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Left Windows </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_WIN_R</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Right Windows </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_MENU</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Menu </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_ALT_SYSREQ</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Alt-Sysreq </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_CTRL_BREAK</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Ctrl-Break </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_BACK</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - back </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_FORWARD</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - forward </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_STOP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - stop </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_MAIL</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - mail </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_SEARCH</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - search </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_FAV</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - fovorites </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_INT_HOME</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Internet - home </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_POWER_MYCOMP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Powerkeys - my computer </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_POWER_CALC</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Powerkeys - calculator </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_POWER_SLEEP</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Powerkeys - sleep </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_POWER_POWER</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Powerkeys - power </TD
+></TR
+><TR
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+>BX_KEY_POWER_WAKE</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+> Powerkeys - wake </TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1401.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c1838.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Sound Blaster 16 Emulation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1061.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Using Bochs</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

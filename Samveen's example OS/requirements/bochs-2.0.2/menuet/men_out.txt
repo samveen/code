@@ -1,0 +1,535 @@
+00000000000i[MEM0 ] allocated memory at 00BE0020. after alignment, vector=00BE1000
+00000000000i[MEM0 ] 32.00MB
+00000000000i[MEM0 ] rom at 0xf0000/65536 ('../BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/32769 ('../VGABIOS-elpin-2.40')
+00000000000i[CMOS ] Setting initial clock to: Mon May 19 14:33:13 2003 (time0=1053334993)
+00000000000i[DMA  ] channel 4 used by cascade
+00000000000i[DMA  ] channel 2 used by Floppy Drive
+00000000000i[FDD  ] fd0: 'menuet.img' ro=0, h=2,t=80,spt=18
+00000000000i[KMAP ] Loading keymap from '../keymaps/x11-pc-us.map'
+00000000000i[KMAP ] Loaded 168 symbols
+00000000000i[VGA  ] interval=30000
+00000000000i[VGA  ] VBE Bochs Display Extension Enabled
+00000000000i[     ] init_mem of 'harddrv' plugin device by virtual method
+00000000000i[     ] init_mem of 'keyboard' plugin device by virtual method
+00000000000i[     ] init_mem of 'serial' plugin device by virtual method
+00000000000i[     ] init_mem of 'parallel' plugin device by virtual method
+00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
+00000000000i[HD   ] Boot device will be 'a'
+00000000000i[HD   ] Floppy boot signature check is enabled
+00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
+00000000000i[KBD  ] will paste characters every 1000 keyboard ticks
+00000000000i[     ] init_dev of 'serial' plugin device by virtual method
+00000000000i[SER  ] com1 at 0x3f8/8 irq 4
+00000000000i[     ] init_dev of 'parallel' plugin device by virtual method
+00000000000i[PAR  ] parallel port 1 at 0x378
+00000000000i[     ] reset of 'harddrv' plugin device by virtual method
+00000000000i[     ] reset of 'keyboard' plugin device by virtual method
+00000000000i[     ] reset of 'serial' plugin device by virtual method
+00000000000i[     ] reset of 'parallel' plugin device by virtual method
+00000004256i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+00000330043i[KBD  ] reset-disable command received
+00000506792e[HD   ] device set to 0 which does not exist
+00000507085e[HD   ] device set to 1 which does not exist
+00304494012i[FDD  ] increment_sector: clamping cylinder to max
+00750316000i[VGA  ] Changing timer interval to 3000
+
+-0775436499i[KBD  ] system reset
+-0775436499e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0775436499i[     ] reset of 'harddrv' plugin device by virtual method
+-0775436499i[     ] reset of 'keyboard' plugin device by virtual method
+-0775436499i[     ] reset of 'serial' plugin device by virtual method
+-0775436499i[     ] reset of 'parallel' plugin device by virtual method
+-0653432936i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653428523i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653424109i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653419696i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653415283i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653410870i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653406456i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653402030i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653397617i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653393203i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653388790i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653384377i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653379964i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653375550i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653371124i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653366711i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653362297i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653357884i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653353471i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653349058i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653344644i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653340218i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653335805i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653331391i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653326978i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653322565i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653318152i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653313738i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653309312i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653304899i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653300485i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653296072i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653291659i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653287246i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653282832i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653278406i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653273993i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653269579i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653265166i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653260753i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653256340i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653251926i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653247500i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653243087i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653238673i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653234260i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653229847i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653225434i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653221020i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653216594i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653212181i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653207767i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653203354i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653198941i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653194528i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653190114i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653185688i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653181275i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653176861i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653172448i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653168035i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653163622i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653159208i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653154782i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653150369i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653145955i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653141542i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653137129i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653132716i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653128302i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653123876i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653119463i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653115049i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653110636i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653106223i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653101810i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653097396i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653092970i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653088557i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653084143i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653079730i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653075317i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653070904i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653066490i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653062064i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653057651i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653053237i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653048824i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653044411i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653039998i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653035584i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653031158i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0653026745i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0653022331i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0653017918i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0653013505i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0653009092i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0653004678i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0653000252i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652995839i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652991425i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652987012i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652982599i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652978186i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652973772i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652969346i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652964933i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652960519i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652956106i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652951693i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652947280i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652942866i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652938440i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652934027i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652929613i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652925200i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652920787i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652916374i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652911960i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652907534i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652903121i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652898707i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652894294i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652889881i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652885468i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652881054i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652876628i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652872215i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652867801i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652863388i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652858975i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652854562i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652850148i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652845722i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652841309i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652836895i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652832482i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652828069i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652823656i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652819242i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652814816i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652810403i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652805989i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652801576i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652797163i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652792750i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652788336i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652783910i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652779497i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652775083i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652770670i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652766257i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652761844i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652757430i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652753004i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652748591i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652744177i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652739764i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652735351i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652730938i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652726524i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652722098i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652717685i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652713271i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652708858i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652704445i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652700032i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652695618i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652691192i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652686779i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652682365i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652677952i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652673539i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652669126i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652664712i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652660286i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652655873i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652651459i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652647046i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652642633i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652638220i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652633806i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652629380i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652624967i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652620553i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652616140i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652611727i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652607314i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652602900i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652598474i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652594061i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652589647i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652585234i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652580821i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652576408i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652571994i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652567568i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652563155i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652558741i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652554328i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652549915i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652545502i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652541088i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652536662i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652532249i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652527835i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652523422i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652519009i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652514596i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652510182i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652505756i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652501343i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652496929i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652492516i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652488103i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652483690i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652479276i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652474850i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652470437i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652466023i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652461610i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652457197i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652452784i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652448370i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652443944i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652439531i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652435117i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652430704i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652426291i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652421878i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652417464i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652413038i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652408625i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652404211i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652399798i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652395385i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652390972i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652386558i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652382132i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652377719i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652373305i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652368892i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652364479i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652360066i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652355652i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652351226i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652346813i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652342399i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652337986i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652333573i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652329160i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652324746i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652320320i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652315907i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652311493i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652307080i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652302667i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652298254i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652293840i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652289414i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652285001i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652280587i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652276174i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652271761i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652267348i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652262934i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652258508i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652254095i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652249681i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652245268i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652240855i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652236442i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652232028i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652227602i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652223189i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652218775i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652214362i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652209949i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652205536i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652201122i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652196696i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652192283i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652187869i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652183456i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652179043i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652174630i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652170216i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652165790i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652161377i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652156963i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652152550i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652148137i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652143724i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652139310i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652134884i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652130471i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652126057i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652121644i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652117231i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652112818i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652108404i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0652103978i[BIOS ] *** int 15h function AX=5304, BX=0000 not yet supported!
+-0652099565i[BIOS ] *** int 15h function AX=5302, BX=0000 not yet supported!
+-0652095151i[BIOS ] *** int 15h function AX=5308, BX=0001 not yet supported!
+-0652090738i[BIOS ] *** int 15h function AX=530D, BX=0001 not yet supported!
+-0652086325i[BIOS ] *** int 15h function AX=530F, BX=0001 not yet supported!
+-0652081912i[BIOS ] *** int 15h function AX=530E, BX=0000 not yet supported!
+-0652077498i[BIOS ] *** int 15h function AX=5307, BX=0001 not yet supported!
+-0613643024i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0613317237i[KBD  ] reset-disable command received
+-0613140339e[HD   ] device set to 0 which does not exist
+-0613140046e[HD   ] device set to 1 which does not exist
+-0520415796i[WGUI ] system RESET callback.
+-0520415796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0520415796i[     ] reset of 'harddrv' plugin device by virtual method
+-0520415796i[     ] reset of 'keyboard' plugin device by virtual method
+-0520415796i[     ] reset of 'serial' plugin device by virtual method
+-0520415796i[     ] reset of 'parallel' plugin device by virtual method
+-0520411540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0520087235i[KBD  ] reset-disable command received
+-0519910539e[HD   ] device set to 0 which does not exist
+-0519910246e[HD   ] device set to 1 which does not exist
+-0476191296i[WGUI ] system RESET callback.
+-0476191296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0476191296i[     ] reset of 'harddrv' plugin device by virtual method
+-0476191296i[     ] reset of 'keyboard' plugin device by virtual method
+-0476191296i[     ] reset of 'serial' plugin device by virtual method
+-0476191296i[     ] reset of 'parallel' plugin device by virtual method
+-0476187040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0475857225i[KBD  ] reset-disable command received
+-0475680529e[HD   ] device set to 0 which does not exist
+-0475680236e[HD   ] device set to 1 which does not exist
+-0468163296i[WGUI ] system RESET callback.
+-0468163296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0468163296i[     ] reset of 'harddrv' plugin device by virtual method
+-0468163296i[     ] reset of 'keyboard' plugin device by virtual method
+-0468163296i[     ] reset of 'serial' plugin device by virtual method
+-0468163296i[     ] reset of 'parallel' plugin device by virtual method
+-0468159040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0467597251i[KBD  ] reset-disable command received
+-0467420535e[HD   ] device set to 0 which does not exist
+-0467420242e[HD   ] device set to 1 which does not exist
+-0461227296i[WGUI ] system RESET callback.
+-0461227296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0461227296i[     ] reset of 'harddrv' plugin device by virtual method
+-0461227296i[     ] reset of 'keyboard' plugin device by virtual method
+-0461227296i[     ] reset of 'serial' plugin device by virtual method
+-0461227296i[     ] reset of 'parallel' plugin device by virtual method
+-0461223040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0460897253i[KBD  ] reset-disable command received
+-0460719547e[HD   ] device set to 0 which does not exist
+-0460719254e[HD   ] device set to 1 which does not exist
+-0455367796i[WGUI ] system RESET callback.
+-0455367796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0455367796i[     ] reset of 'harddrv' plugin device by virtual method
+-0455367796i[     ] reset of 'keyboard' plugin device by virtual method
+-0455367796i[     ] reset of 'serial' plugin device by virtual method
+-0455367796i[     ] reset of 'parallel' plugin device by virtual method
+-0455363540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0455037221i[KBD  ] reset-disable command received
+-0454860525e[HD   ] device set to 0 which does not exist
+-0454860232e[HD   ] device set to 1 which does not exist
+-0450001796i[WGUI ] system RESET callback.
+-0450001796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0450001796i[     ] reset of 'harddrv' plugin device by virtual method
+-0450001796i[     ] reset of 'keyboard' plugin device by virtual method
+-0450001796i[     ] reset of 'serial' plugin device by virtual method
+-0450001796i[     ] reset of 'parallel' plugin device by virtual method
+-0449997540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0449667231i[KBD  ] reset-disable command received
+-0449490535e[HD   ] device set to 0 which does not exist
+-0449490242e[HD   ] device set to 1 which does not exist
+-0446728296i[WGUI ] system RESET callback.
+-0446728296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0446728296i[     ] reset of 'harddrv' plugin device by virtual method
+-0446728296i[     ] reset of 'keyboard' plugin device by virtual method
+-0446728296i[     ] reset of 'serial' plugin device by virtual method
+-0446728296i[     ] reset of 'parallel' plugin device by virtual method
+-0446724040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0446397227i[KBD  ] reset-disable command received
+-0446220531e[HD   ] device set to 0 which does not exist
+-0446220238e[HD   ] device set to 1 which does not exist
+-0443280296i[WGUI ] system RESET callback.
+-0443280296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0443280296i[     ] reset of 'harddrv' plugin device by virtual method
+-0443280296i[     ] reset of 'keyboard' plugin device by virtual method
+-0443280296i[     ] reset of 'serial' plugin device by virtual method
+-0443280296i[     ] reset of 'parallel' plugin device by virtual method
+-0443276040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0442947251i[KBD  ] reset-disable command received
+-0442770517e[HD   ] device set to 0 which does not exist
+-0442770224e[HD   ] device set to 1 which does not exist
+-0439652796i[WGUI ] system RESET callback.
+-0439652796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0439652796i[     ] reset of 'harddrv' plugin device by virtual method
+-0439652796i[     ] reset of 'keyboard' plugin device by virtual method
+-0439652796i[     ] reset of 'serial' plugin device by virtual method
+-0439652796i[     ] reset of 'parallel' plugin device by virtual method
+-0439648540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0439317243i[KBD  ] reset-disable command received
+-0439140547e[HD   ] device set to 0 which does not exist
+-0439140254e[HD   ] device set to 1 which does not exist
+-0436271296i[WGUI ] system RESET callback.
+-0436271296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0436271296i[     ] reset of 'harddrv' plugin device by virtual method
+-0436271296i[     ] reset of 'keyboard' plugin device by virtual method
+-0436271296i[     ] reset of 'serial' plugin device by virtual method
+-0436271296i[     ] reset of 'parallel' plugin device by virtual method
+-0436267040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0435937225i[KBD  ] reset-disable command received
+-0435760529e[HD   ] device set to 0 which does not exist
+-0435760236e[HD   ] device set to 1 which does not exist
+-0432371796i[WGUI ] system RESET callback.
+-0432371796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0432371796i[     ] reset of 'harddrv' plugin device by virtual method
+-0432371796i[     ] reset of 'keyboard' plugin device by virtual method
+-0432371796i[     ] reset of 'serial' plugin device by virtual method
+-0432371796i[     ] reset of 'parallel' plugin device by virtual method
+-0432367540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0432037231i[KBD  ] reset-disable command received
+-0431860535e[HD   ] device set to 0 which does not exist
+-0431860242e[HD   ] device set to 1 which does not exist
+-0428113796i[WGUI ] system RESET callback.
+-0428113796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0428113796i[     ] reset of 'harddrv' plugin device by virtual method
+-0428113796i[     ] reset of 'keyboard' plugin device by virtual method
+-0428113796i[     ] reset of 'serial' plugin device by virtual method
+-0428113796i[     ] reset of 'parallel' plugin device by virtual method
+-0428109540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0427777255i[KBD  ] reset-disable command received
+-0427600521e[HD   ] device set to 0 which does not exist
+-0427600228e[HD   ] device set to 1 which does not exist
+-0423992796i[WGUI ] system RESET callback.
+-0423992796e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0423992796i[     ] reset of 'harddrv' plugin device by virtual method
+-0423992796i[     ] reset of 'keyboard' plugin device by virtual method
+-0423992796i[     ] reset of 'serial' plugin device by virtual method
+-0423992796i[     ] reset of 'parallel' plugin device by virtual method
+-0423988540i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0423657243i[KBD  ] reset-disable command received
+-0423480547e[HD   ] device set to 0 which does not exist
+-0423480254e[HD   ] device set to 1 which does not exist
+-0420660296i[WGUI ] system RESET callback.
+-0420660296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0420660296i[     ] reset of 'harddrv' plugin device by virtual method
+-0420660296i[     ] reset of 'keyboard' plugin device by virtual method
+-0420660296i[     ] reset of 'serial' plugin device by virtual method
+-0420660296i[     ] reset of 'parallel' plugin device by virtual method
+-0420656040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0420327251i[KBD  ] reset-disable command received
+-0420150517e[HD   ] device set to 0 which does not exist
+-0420150224e[HD   ] device set to 1 which does not exist
+-0415284296i[WGUI ] system RESET callback.
+-0415284296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0415284296i[     ] reset of 'harddrv' plugin device by virtual method
+-0415284296i[     ] reset of 'keyboard' plugin device by virtual method
+-0415284296i[     ] reset of 'serial' plugin device by virtual method
+-0415284296i[     ] reset of 'parallel' plugin device by virtual method
+-0415280040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0414947223i[KBD  ] reset-disable command received
+-0414770527e[HD   ] device set to 0 which does not exist
+-0414770234e[HD   ] device set to 1 which does not exist
+-0410300296i[WGUI ] system RESET callback.
+-0410300296e[SYS  ] # bx_pc_system_c::ResetSignal() called
+-0410300296i[     ] reset of 'harddrv' plugin device by virtual method
+-0410300296i[     ] reset of 'keyboard' plugin device by virtual method
+-0410300296i[     ] reset of 'serial' plugin device by virtual method
+-0410300296i[     ] reset of 'parallel' plugin device by virtual method
+-0410296040i[BIOS ]  rombios.c,v 1.85.2.1 2003/01/16 21:58:42 cbothamy Exp $
+-0409967251i[KBD  ] reset-disable command received
+-0409790517e[HD   ] device set to 0 which does not exist
+-0409790224e[HD   ] device set to 1 which does not exist
+-0401845296p[WGUI ] >>PANIC<< POWER button turned off.
+-0401845296i[SYS  ] Last time is 1053342769
+-0401845296i[CPU  ] real mode
+-0401845296i[CPU  ] CS.d_b = 16 bit
+-0401845296i[CPU  ] SS.d_b = 16 bit
+-0401845296i[CPU  ] | EAX=000000fa  EBX=00000b02  ECX=000000fa  EDX=00001000
+-0401845296i[CPU  ] | ESP=00007bf6  EBP=000007f3  ESI=00000826  EDI=0000a000
+-0401845296i[CPU  ] | IOPL=0 NV UP DI PL ZR NA PE NC
+-0401845296i[CPU  ] | SEG selector     base    limit G D
+-0401845296i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+-0401845296i[CPU  ] |  DS:1000( 0000| 0|  0) 00010000 0000ffff 0 0
+-0401845296i[CPU  ] |  ES:1000( 0000| 0|  0) 00010000 0000ffff 0 0
+-0401845296i[CPU  ] |  FS:0000( 0000| 0|  0) 00000000 0000ffff 0 0
+-0401845296i[CPU  ] |  GS:0000( 0000| 0|  0) 00000000 0000ffff 0 0
+-0401845296i[CPU  ] |  SS:0000( 0000| 0|  0) 00000000 0000ffff 0 0
+-0401845296i[CPU  ] |  CS:1000( 0000| 0|  0) 00010000 0000ffff 0 0
+-0401845296i[CPU  ] | EIP=00000b90 (00000b90)
+-0401845296i[CPU  ] | CR0=0x60000010 CR1=0x00000000 CR2=0x00000000
+-0401845296i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+-0401845296i[     ] restoring default signal behavior
+-0401845296i[CTRL ] quit_sim called with exit code 1

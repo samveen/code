@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Supported Platforms</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Introduction to Bochs"
+HREF="c23.html"><LINK
+REL="PREVIOUS"
+TITLE="Features"
+HREF="x75.html"><LINK
+REL="NEXT"
+TITLE="FAQ"
+HREF="x237.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x75.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Introduction to Bochs</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x237.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="SUPPORTED-PLATFORMS">Supported Platforms</H1
+><P
+>       <IMG
+SRC="../images/undercon.gif"> should add a column with supported display library (X11, SDL, wx, etc...)</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN204"><P
+><B
+>Table 2. Supported platforms</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Unix/X11</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>X windows has always been well supported because it was
+      Kevin Lawton's main development platform.  Bryce Denney maintains
+      the Unix/X11 platform now.  Most features and fixes (not all) are
+      tried first in Unix and then ported to the others.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Win32</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>This port was done by David Ross and is now maintained
+      by Don Becker.  You can compile with MS Visual C++ 5.0 or 6.0,
+      or Cygwin<A
+NAME="AEN214"
+HREF="#FTN.AEN214"
+>[a]</A
+>.
+      See <A
+HREF="x589.html#COMPILING-WIN32"
+>the Section called <I
+>Compiling on Win32 with Microsoft VC++</I
+> in the chapter called <I
+>Installation</I
+></A
+> for compile
+      instructions.  </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>BeOS</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Kevin Lawton wrote this port, originally to R3/PPC using
+      CodeWarrior.  It now works on R4/x86 with egcs. Simon Huet picked up
+      maintaining/reworking the BeOS GUI port.  In September 2001, Bernd Korz
+      of Yellow Tab, Inc. 
+      (<A
+HREF="http://www.yellowtab.com"
+TARGET="_top"
+>www.yellowtab.com</A
+>), took
+      over the BeOS/Zeta port.  Use the same compile and install process as
+      Unix.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>MacOS X</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>     Emmanuel Mailliard ported the Macintosh code to MacOS X with Carbon API.
+     Jeremy Parsons (Br'fin) has been maintaining the MacOS X port since
+     March 2002.
+     </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Macintosh</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>David Batterham drbatter@socs.uts.edu.au or drbatter@yahoo.com
+      ported bochs to the Mac.  He compiled with CodeWarrior Pro R1 (CW12).  To
+      compile, you have to build headers and Makefiles on a Unix machine using
+      "configure --with-macos".  Check out David's MacBochs website.  David has
+      not had time to maintain the page or the Mac port since early 2000. If
+      you have Mac development tools and want to contribute, contact the
+      <A
+HREF="c1846.html#BOCHS-DEVELOPERS"
+>bochs-developers mailing list</A
+>. </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Amiga MorphOS</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>      This port is written and maintained by Nicholai Benalal.
+      </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>OS/2</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> Nick Behnken used PE2LX to translate David Ross's Win32
+      port to an OS/2 program.  This hasn't been updated in more than
+      a year, and Nick Behnken's page seems to be inactive.
+      Also, Craig Ballantyne ported bochs to OS/2, but his web page has
+      disappeared and his port has not been updated since March 2000.
+      His latest sources are at <A
+HREF="http://www.os2world.com/emulator/computer.html"
+TARGET="_top"
+>http://www.os2world.com/emulator/computer.html</A
+>.
+      If you want to bring the OS/2 port up to date, contact the <A
+HREF="c1846.html#BOCHS-DEVELOPERS"
+>bochs-developers mailing list</A
+>.
+      </TD
+></TR
+></TBODY
+><TR
+><TD
+COLSPAN="2"
+>Notes:<BR><A
+NAME="FTN.AEN214"
+>a. </A
+>Cygwin is a free Unix-like environment for Windows written by
+Steve Chamberlain and now maintained by RedHat.  Download it from--you guessed it--<A
+HREF="http://www.cygwin.com"
+TARGET="_top"
+>www.cygwin.com</A
+><BR></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x75.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x237.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Features</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c23.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>FAQ</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

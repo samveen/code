@@ -1,0 +1,605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Bios Tips</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Bochs User Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Tips and Techniques"
+HREF="c1900.html"><LINK
+REL="PREVIOUS"
+TITLE="Using the serial port"
+HREF="x2220.html"><LINK
+REL="NEXT"
+TITLE="How to enter special key combination"
+HREF="x2356.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Bochs User Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2220.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Tips and Techniques</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x2356.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="BIOS-TIPS">Bios Tips</H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN2255">CD Boot error codes</H2
+><P
+>When failing to boot from CDROM, the bios outputs 
+the reason of the failure as
+an error code, in the log file, and on the screen.
+Here are the meaning of the errors:
+
+<DIV
+CLASS="TABLE"
+><A
+NAME="AEN2258"><P
+><B
+>Table 1. CD Boot error codes</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Error code</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Reason</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x01 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> no atapi device found </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x02 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> no atapi cdrom found </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x03 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> can not read cd - BRVD </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x04 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> cd is not eltorito (BRVD) </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x05 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> cd is not eltorito (ISO TAG) </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x06 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> cd is not eltorito (ELTORITO TAG) </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x07 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> can not read cd - boot catalog </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x08 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> boot catalog : bad header </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x09 </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> boot catalog : bad platform </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x0A </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> boot catalog : bad signature </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x0B </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> boot catalog : bootable flag not set </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> 0x0C </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+> can not read cd - boot image </TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+        </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN2302">Disk translation</H2
+><P
+>Since the beginning of the PC era, disks have grown in size by a factor of 10000. Due to 
+differences between the ATA specification and BIOSes implementations, when disks reached
+critical sizes, it
+became necessary to translate the CHS geometry (cylinders, heads, sectors per track)
+between the BIOS (int 13h) and the ATA interface. Please refer to the 
+<A
+HREF="http://burks.brighton.ac.uk/burks/pcinfo/hardware/atafaq/atafq.htm"
+TARGET="_top"
+>ATA-FAQ</A
+> 
+and 
+<A
+HREF="http://www.ata-atapi.com/hiwchs.htm"
+TARGET="_top"
+>Hale Landis' document</A
+> 
+for a complete discussion of the problem.
+        </P
+><P
+>Unfortunately, there has never been any standard on the translation algorithms. 
+        </P
+><P
+>Bochs implements 4 well-known algorithms, selectable in the configuration file
+in the "<B
+CLASS="COMMAND"
+>ataX-xxxx: ..., translation='algorithm'</B
+>" section.
+        </P
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN2310"><P
+><B
+>Table 2. Disk translation algorithms</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Algorithm</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Maximum disk size</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Maximum logical and physical geometry (CHS)</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>none</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>528MB (1032192 sectors)</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    LCHS:1024/16/63
+    PCHS:1024/16/63
+    </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    no translation is done. The CHS received at the int13h interface 
+    is sent as is to the ATA interface. 
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>large</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>4.2GB (8257536 sectors)</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    LCHS:1024/128/63
+    PCHS:8192/16/63
+    </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    a standard bitshift algorithm (named Extended-CHS)
+    is used to translate the CHS between 
+    the int13h interface 
+    and the ATA interface. The translation is acheived by 
+    multiplying/dividing the cylinder/head count by a power of 2
+    (2, 4 or 8).
+    (a factor of 16 could not be used because the
+    head count would become 256, and MS-Dos thought this was 0)
+    Note that the number of sectors per track is not changed, so
+    a lower spt value will lead to a lower maximum disk size.
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>echs</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>synonym for large</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>rechs</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>7.9GB (15482880 sectors)</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    LCHS:1024/240/63
+    PCHS:15360/16/63
+    </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    a revised bitshift algorithm (called Revised Extended-CHS)
+    is used to translate the CHS between 
+    the int13h interface 
+    and the ATA interface. First the number of physical heads is forced to
+    15, and the number of cylinders is adjusted accordingly.
+    Then, as in the simple extended CHS algorithm, the translation 
+    is acheived by 
+    multiplying/dividing the cylinder/head count by a power of 2
+    (2, 4, 8 or 16).
+    The head count being forced to 15, it can safely be multiplied by 16 
+    without crashing dos.
+    Note that the number of sectors per track is not changed, so
+    a lower spt value will lead to a lower maximum disk size.
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>lba</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>8.4GB (16450560 sectors)</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    LCHS:1024/255/63
+    PCHS:16320/16/63
+    </TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>    a LBA-assisted algorithm
+    is used to translate the CHS between 
+    the int13h interface 
+    and the ATA interface. The translation is acheived by 
+    first computing the physical size of the disk (LBA=C*H*S).
+    Then the sectors per track is forced to 63, and the head count
+    to 255. Then the cylinder count is computed (C=LBA/(63*255))
+    Note that the number of sectors per track is forced to 63
+    in the logical geometry, regardless of the actual geometry
+    reported by the disk.
+    Also note that the LBA-assisted algorithm has nothing to do with
+    LBA access at the ATA interface.
+    </TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>auto</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>the best suited algorithm between none, large and lba is used</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>Setting a specific CHS translation should be done if you use a disk dump
+of an actual disk, or use a real disk as a block device. You need to
+know which geometry was used to format the disk, and which translation 
+was used.
+        </P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>rechs translation should only be useful for compaq users who wants to
+use a disk as a block device. Please report if you know any other
+system that use such translation.
+        </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>If you plan to create a new disk image (for example with bximage),
+format it and install an OS on it, select the "auto" translation
+for an automatic selection
+of the best algorithm based on the disk image size. Be warned that an image created
+with the "auto" translation might not be readable with previous versions of Bochs.
+Upward compatibility will be maintained.
+        </P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="./stylesheet-images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>This translation applies only to int13h bios disk accesses. Older OSes (ie MS-Dos)
+tend to use them a lot.  On modern OSes, disk accesses through BIOS int13h are 
+limited to boot loaders.
+The usual rules and tricks of the installed OS still apply (ie 1024 cylinders boot limit).</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2220.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x2356.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Using the serial port</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1900.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How to enter special key combination</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
