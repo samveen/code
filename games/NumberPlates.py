@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Sample optparse implementation
 
@@ -7,6 +7,8 @@ import sys
 import random
 import string
 import easygui
+
+from optparse import OptionParser
 
 regional_transport_authority_names = {
         "LA" : "Ladakh",
@@ -65,11 +67,47 @@ def get_plate():
 
     return [numberplate, regional_transport_authority_names[authorities[auth]]]
 
+def build_parser():
+    usagestr = "%prog [options] <program>"
+    parser = OptionParser(usage=usagestr)
+
+    parser.add_option(
+        "-c", "--count", dest="count", action="store", default=25,
+        help="""Count of questions to ask."""
+        )
+    parser.add_option(
+        "-a", "--answers", dest="answers", action="store", default="Y",
+        help="Show the answers or not.",
+        )
+    return parser
+
+yes_answers= ['Y','Yes','yes']
+no_answers= ['N','No','no']
+
+def validate_opts(opts):
+    if opts.count:
+        try:
+            int(opts.count)
+        except ValueError:
+            print("\nError: Value of the count option must be a number.")
+            parser.print_help()
+            sys.exit(4)
+    if opts.answers:
+        if opts.answers not in yes_answers+no_answers:
+            print("\nError: Value of the answers option must be Y/Yes/yes/N/No/no .")
+            parser.print_help()
+            sys.exit(8)
 if __name__ == '__main__':
 
-    while True:
+    parser = build_parser()
+    (opts, args) = parser.parse_args()
+    validate_opts(opts)
+    print("Showing {} questions (show answers:{})".format(opts.count,opts.answers))
+
+    for x in range(int(opts.count)):
         result=get_plate()
         easygui.msgbox(result[0], 'Question')
-        easygui.msgbox(result[1], 'Answer')
+        if opts.answers in yes_answers:
+            easygui.msgbox(result[1], 'Answer')
 
 # vim: set ts=4 sw=4 et:
